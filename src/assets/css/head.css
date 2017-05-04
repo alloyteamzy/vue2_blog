@@ -1,0 +1,25 @@
+.logo {
+    width: 90%;
+    opacity: .8;
+    padding: 0.7rem;
+}
+
+.info_area {
+    position: absolute;
+    top: 0.5rem;
+    text-align: right;
+}
+
+.user_img {
+    width: 15%;
+    border-radius: 1.5rem;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.log_out {
+    width: 6%;
+    display: inline-block;
+    margin: 0.9rem 0.5rem;
+    float: right;
+}

@@ -1,0 +1,58 @@
+.diary {
+    background-image: url('../img/diary_bg.jpg');
+    background-size: 100% 100%;
+    height: 100%;
+}
+
+.content {
+    background-image: url('../img/article_bg.jpg');
+    background-size: 100% 100%;
+    width: 85%;
+    margin: 0 auto;
+    height: 81%;
+    margin-top: -3rem;
+    box-shadow: 0.3rem 0.3rem 1.2rem #000
+}
+
+.quote {
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 17%;
+    display: block;
+    background: linear-gradient(to bottom, #8B4513, #7a3c11);
+    padding: .8rem;
+    margin: 2.2rem auto 2.2rem auto;
+    text-align: center;
+    width: 55%;
+    height: auto;
+    color: #fff;
+    border: .1em dashed #CD853F;
+    border-radius: .5rem;
+    box-shadow: 0 0 0 0.3rem #753a10, 2px 1px 6px 4px rgba(10, 10, 0, .5);
+    text-shadow: 1.5px 1.5px #000;
+    font-size: 0.8rem;
+}
+
+.name_show {
+    font-size: 0.8rem;
+    text-align: center;
+    padding-top: 76%;
+    font-family: -webkit-pictograph;
+}
+
+.edit_article {
+    position: relative;
+    margin: 16% auto 0;
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    border: 10px solid #fff;
+    cursor: pointer;
+    box-shadow: 0.3rem 0.3rem 1.2rem #000;
+    transform: scale(.8);
+    background: center center no-repeat transparent;
+    background-image: url('../img/edit.png'), linear-gradient(to bottom, #8B4513, #7a3c11);
+}

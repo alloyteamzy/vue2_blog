@@ -1,0 +1,185 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.w100 {
+    width: 100%;
+}
+
+.h100 {
+    height: 100%;
+}
+
+.text-center {
+    align-content: center;
+}
+
+.pic-full {
+    width: 100%;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+.w80 {
+    width: 80%;
+}
+
+.pt5 {
+    padding-top: 0.5rem;
+}
+
+.pb5 {
+    padding-bottom: 0.5rem;
+}
+
+.hide {
+    display: none;
+}
+
+.fadeIn {
+    animation: diyfadeIn 0.3s;
+    -moz-animation: diyfadeIn 0.3s;
+    /* Firefox */
+    -webkit-animation: diyfadeIn 0.3s;
+    /* Safari and Chrome */
+    -o-animation: diyfadeIn 0.3s;
+    /* Opera */
+}
+
+@keyframes diyfadeIn {
+    0% {
+        display: block;
+        opacity: 0.1;
+    }
+    25% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
+
+@-moz-keyframes diyfadeIn
+/* Firefox */
+
+{
+    0% {
+        display: block;
+        opacity: 0.1;
+    }
+    25% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
+
+@-webkit-keyframes diyfadeIn
+/* Safari and Chrome */
+
+{
+    0% {
+        display: block;
+        opacity: 0.1;
+    }
+    25% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
+
+@-o-keyframes diyfadeIn
+/* Opera */
+
+{
+    0% {
+        display: block;
+        opacity: 0.1;
+    }
+    25% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.7;
+    }
+}
+
+
+/*模态框*/
+
+.modal {
+    position: fixed;
+    top: 25%;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 2;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    overflow: visible;
+    display: block;
+}
+
+.bg {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    z-index: 1;
+    -moz-opacity: 0.8;
+    opacity: .80;
+    filter: alpha(opacity=80);
+}
+
+.modal-content {
+    height: 6rem;
+}
+
+.modal-title {
+    font-size: 0.8rem;
+}
+
+.modal-body {
+    font-size: 0.6rem;
+    line-height: 2rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.ml2 {
+    margin-left: 2rem;
+}

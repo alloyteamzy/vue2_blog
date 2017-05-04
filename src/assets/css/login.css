@@ -1,0 +1,123 @@
+.login {
+    z-index: 2;
+    background-image: url('../img/login_bg.jpg');
+    background-size: 100% 100%;
+    height: 100%;
+}
+
+.login .form-area {
+    width: 100%;
+    padding-top: 8rem;
+    text-align: center;
+}
+
+.login .login-icon {
+    display: inline-block;
+    width: 6%;
+}
+
+.login .two-btns {
+    width: 8.3rem;
+    margin: 0 auto;
+    padding-left: 1.1rem;
+    margin-top: 1rem;
+}
+
+.login input[type=text] {
+    width: 7rem;
+    height: 1.2rem;
+    font-size: .7rem;
+    padding: 0 .3rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    color: purple;
+    font-family: 'simhei';
+}
+
+.login input[type=password] {
+    width: 7rem;
+    height: 1.2rem;
+    font-size: .7rem;
+    padding: 0 .3rem;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 2px;
+    color: purple;
+    font-family: 'Exo', sans-serif;
+    margin-top: 1rem;
+    font-family: 'simhei';
+}
+
+.login input[type=button],
+.login input[type=submit] {
+    width: 3rem;
+    margin-left: 0.2rem;
+    height: 1.2rem;
+    font-size: 0.6rem;
+    line-height: 1.2rem;
+    background: #fff;
+    border: 1px solid #fff;
+    cursor: pointer;
+    border-radius: 2px;
+    color: #a18d6c;
+    font-family: 'Exo', sans-serif;
+    margin-top: 10px;
+}
+
+.login input[type=button]:active {
+    opacity: 0.6;
+}
+
+.login input[type=submit]:active {
+    opacity: 0.6;
+}
+
+.login input[type=text]:focus {
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.login input[type=password]:focus {
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+}
+
+.login input[type=button]:focus {
+    outline: none;
+}
+
+::-webkit-input-placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+::-moz-input-placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.footer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    background-color: #000000;
+    height: 2rem;
+    z-index: 555;
+    text-align: center;
+    color: #fff;
+    font-size: .7rem;
+    letter-spacing: 0.3rem;
+    line-height: 2rem;
+}
+
+.footer a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.pl2 {
+    padding-left: 2rem;
+}
+
+.direct {
+    padding: 0 1.5rem;
+}
