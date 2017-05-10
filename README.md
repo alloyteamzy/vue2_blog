@@ -3,10 +3,6 @@
 ## Vue2_blog
 >
 > vue2,vuex,vue-cli,axios,webpack,express,mysql 
-## 预览效果看这里(样式只适配了移动端，建议在模拟器下预览)：
->
-## http://120.76.128.196
->
 ## Build Setup
 
 ``` bash
