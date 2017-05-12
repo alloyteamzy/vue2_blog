@@ -8481,6 +8481,7 @@ c3 -10 8 -43 11 -73 4 -30 12 -90 19 -132 7 -43 9 -82 6 -88 -9 -14 -46 -34
 </div>
 <div class='footer'>
     <router-link to="/about"><span>關於溫度</span></router-link>|<span><router-link to="/diary">隱私權</router-link></span>|<span><router-link to="/message_board">給我留言🍀</router-link></span>
+    <p><a href="http://www.miitbeian.gov.cn/">粤ICP备17055437号-1</a></p>
 </div>
 <div class="notice-bg" ref='wechat'>
 				<div class="notice">
@@ -8504,7 +8505,7 @@ c3 -10 8 -43 11 -73 4 -30 12 -90 19 -132 7 -43 9 -82 6 -88 -9 -14 -46 -34
                     if(/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)){
                         var ua = window.navigator.userAgent.toLowerCase(); 
 							if(ua.match(/MicroMessenger/i) == 'micromessenger'){ 						     	
-                              this.$refs.wechat.style.display = 'block';	
+                            //   this.$refs.wechat.style.display = 'block';	
 							  } 
 		         }           
           }

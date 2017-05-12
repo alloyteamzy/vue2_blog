@@ -6,10 +6,31 @@ var $sql = require('../sqlMap');
 // var getName = require('../../src/js/getLoginName');
 var login_name = 'zygg';
 console.log('get' + login_name);
-// 连接数据库
-var conn = mysql.createConnection(models.mysql);
 
-conn.connect();
+function handleError(err) {
+    if (err) {
+        // 如果是连接断开，自动重新连接
+        if (err.code === 'PROTOCOL_CONNECTION_LOST') {
+            connect();
+        } else {
+            console.error(err.stack || err);
+        }
+    }
+}
+
+// 连接数据库
+function connect() {
+    conn = mysql.createConnection(models.mysql);
+    conn.connect(handleError);
+    conn.on('error', handleError);
+}
+
+connect();
+
+// 连接数据库
+// var conn = mysql.createConnection(models.mysql);
+
+// conn.connect();
 var jsonWrite = function(res, ret) {
     if (typeof ret === 'undefined') {
         res.json({

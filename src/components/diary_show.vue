@@ -87,63 +87,103 @@
         commonhead: commonhead
       },
 	 created(){
-		       var message_info = this.message_info;
-			   this.author= unescape(setCookie.setInfo().name);
-			   var author_info = this.author;
-			   var currentdate = gettime.gettimer();
-			   var self  = this;
-			   window.onscroll = function (){
-	           var scrollTopjs = document.documentElement.scrollTop || window.pageYOfset ||document.body.scrollTop;
-    	       var scrollHeightjs = document.body.scrollHeight;
-    	       var windowHeightjs = document.documentElement.clientHeight;
-    	       if (scrollTopjs + windowHeightjs == scrollHeightjs) {　　
-    	        //  console.log('js到底了！');
-				 if(self.page_num < self.list_total){
-						self.hidden = '';
-			            self.page_num += 8;
-				 }
-				 else{ 
-					   if($('.endInfo').length == 0){
-						   var obj = "<span class='endInfo' style='width: 100%; display: block;text-align: center; font-size: 0.8rem;padding: 0.5rem 0;'>别拉了，已经加载完了!</span>";
-						   $(".bg_brown").append(obj);
-					   }
-				 }
-    	        }
-				else{
-				 self.hidden = 'hide';
-				}
-              }
-		       if(this.author == ''){
-                 this.classFade = '';
-				 this.errinfo = '未登錄，請登錄！';
-				}
-               else{
-				axios.post('api/user/alldiaryList', {
-				}).then(function(response){
-					self.items = response.data;
-					self.list_total = response.data.length;
-					var list_total = self.list_total;
-				    if(self.list_total >= 8){
-				       self.page_num = 8;
-			           }
-			        else{
-				       self.page_num = self.list_total;
-			        }
-				})
-				axios.post('api/user/commentGet', {
-				}).then(function(response){
-					var length  = response.data.length;
-					for(var i=0; i<length;i++){
-						    var name = response.data[i].userid;
-							var time = response.data[i].create_time;
-							var content = response.data[i].comment_message;
-							var msg_id = response.data[i].msg_id;
-							var floor = $('.reward_list').eq(msg_id-1).children().length+1;
-							var obj = "<li style='padding: 0.8rem 0.5rem;border: 1px solid #cdcdcd;margin: 0 21px 10px;list-style-type: none;'>"+"<span class='name'>"+name+"</span>"+"<span style='padding: 0 0.5rem;'>|</span>"+"<span class='time'>"+time+"</span>"+"<span class='floor' style='background-color: #CDCDCD;float: right;padding: 0.1rem 0.5rem;border-radius: 15%;'>"+floor+"#"+"</span>"+"</br>"+"<span class='content' style='padding-top: 0.5rem;display: inline-block;'>"+content+"</span>"+"</li>"
-							$('.reward_list').eq(msg_id-1).append(obj);
+	var message_info = this.message_info;
+		this.author = unescape(setCookie.setInfo().name);
+		var author_info = this.author;
+		var currentdate = gettime.gettimer();
+		var self = this;
+		window.onscroll = function() {
+			var scrollTopjs = document.documentElement.scrollTop || window.pageYOfset || document.body.scrollTop;
+			var scrollHeightjs = document.body.scrollHeight;
+			var windowHeightjs = document.documentElement.clientHeight;
+			if(scrollTopjs + windowHeightjs == scrollHeightjs) {　　
+				//  console.log('js到底了！');
+				if(self.page_num < self.list_total) {
+					self.hidden = '';
+					var remainder = self.list_total - self.page_num;
+					if(remainder >= 8) {
+						axios.post('api/user/commentGet', {}).then(function(response) {
+							var length = self.page_num;
+							var commentLength = response.data.length;
+							var nextPage;
+							if(commentLength > self.page_num + 8){
+								nextPage = self.page_num + 8
+							}
+							else{
+								nextPage = commentLength;
+							}
+							for(var i = self.page_num ; i < nextPage; i++) {
+								var name = response.data[i].userid;
+								var time = response.data[i].create_time;
+								var content = response.data[i].comment_message;
+								var msg_id = response.data[i].msg_id;
+								var floor = $('.reward_list').eq(msg_id - 1).children().length + 1;
+								var obj = "<li style='padding: 0.8rem 0.5rem;border: 1px solid #cdcdcd;margin: 0 21px 10px;list-style-type: none;'>" + "<span class='name'>" + name + "</span>" + "<span style='padding: 0 0.5rem;'>|</span>" + "<span class='time'>" + time + "</span>" + "<span class='floor' style='background-color: #CDCDCD;float: right;padding: 0.1rem 0.5rem;border-radius: 15%;'>" + floor + "#" + "</span>" + "</br>" + "<span class='content' style='padding-top: 0.5rem;display: inline-block;'>" + content + "</span>" + "</li>"
+								$('.reward_list').eq(msg_id - 1).append(obj);
+							}
+							self.page_num += 8;
+						})
+					} else {
+						axios.post('api/user/commentGet', {}).then(function(response) {
+							var length = self.page_num;
+							var commentLength = response.data.length;
+							var nextPage;
+							if(commentLength > self.page_num + remainder){
+								nextPage = self.page_num + remainder
+							}
+							else{
+								nextPage = commentLength;
+							}
+							for(var i = self.page_num; i < nextPage; i++) {
+								var name = response.data[i].userid;
+								var time = response.data[i].create_time;
+								var content = response.data[i].comment_message;
+								var msg_id = response.data[i].msg_id;
+								var floor = $('.reward_list').eq(msg_id - 1).children().length + 1;
+								var obj = "<li style='padding: 0.8rem 0.5rem;border: 1px solid #cdcdcd;margin: 0 21px 10px;list-style-type: none;'>" + "<span class='name'>" + name + "</span>" + "<span style='padding: 0 0.5rem;'>|</span>" + "<span class='time'>" + time + "</span>" + "<span class='floor' style='background-color: #CDCDCD;float: right;padding: 0.1rem 0.5rem;border-radius: 15%;'>" + floor + "#" + "</span>" + "</br>" + "<span class='content' style='padding-top: 0.5rem;display: inline-block;'>" + content + "</span>" + "</li>"
+								$('.reward_list').eq(msg_id - 1).append(obj);
+							}
+							self.page_num += remainder;
+						})
 					}
-				})
+				} else {
+					if($('.endInfo').length == 0) {
+						var obj = "<span class='endInfo' style='width: 100%; display: block;text-align: center; font-size: 0.8rem;padding: 0.5rem 0;'>别拉了，已经加载完了!</span>";
+						$(".bg_brown").append(obj);
+					}
+				}
+			} else {
+				self.hidden = 'hide';
 			}
+		}
+		if(this.author == '') {
+			this.classFade = '';
+			this.errinfo = '未登錄，請登錄！';
+		} else {
+			axios.post('api/user/alldiaryList', {}).then(function(response) {
+				self.items = response.data;
+				self.list_total = response.data.length;
+				var list_total = self.list_total;
+				if(self.list_total >= 8) {
+					self.page_num = 8;
+				} else {
+					self.page_num = self.list_total;
+				}
+			})
+			axios.post('api/user/commentGet', {}).then(function(response) {
+				var length = self.page_num;
+				console.log('1:' + self.page_num)
+				for(var i = 0; i < length; i++) {
+					var name = response.data[i].userid;
+					var time = response.data[i].create_time;
+					var content = response.data[i].comment_message;
+					var msg_id = response.data[i].msg_id;
+					var floor = $('.reward_list').eq(msg_id - 1).children().length + 1;
+					var obj = "<li style='padding: 0.8rem 0.5rem;border: 1px solid #cdcdcd;margin: 0 21px 10px;list-style-type: none;'>" + "<span class='name'>" + name + "</span>" + "<span style='padding: 0 0.5rem;'>|</span>" + "<span class='time'>" + time + "</span>" + "<span class='floor' style='background-color: #CDCDCD;float: right;padding: 0.1rem 0.5rem;border-radius: 15%;'>" + floor + "#" + "</span>" + "</br>" + "<span class='content' style='padding-top: 0.5rem;display: inline-block;'>" + content + "</span>" + "</li>"
+					$('.reward_list').eq(msg_id - 1).append(obj);
+				}
+			})
+		}
 	   },
 	   methods:{
 		   	closemodel: function() {

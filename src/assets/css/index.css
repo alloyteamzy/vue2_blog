@@ -40,13 +40,19 @@
     position: fixed;
     bottom: 0;
     background-color: #000000;
-    height: 2rem;
+    height: 3rem;
     z-index: 555;
     text-align: center;
     color: #fff;
     font-size: .7rem;
     letter-spacing: 0.3rem;
-    line-height: 2rem;
+    padding-top: 0.5rem;
+}
+
+.index .footer p {
+    padding-top: 0.2rem;
+    letter-spacing: 0.1rem;
+    font-size: 0.6rem;
 }
 
 .index .footer a {
