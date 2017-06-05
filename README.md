@@ -67,7 +67,7 @@ npm run build
 >
 ## 项目预览
 >
-[Vue_blog](https://www.zygg.cc)
+[Vue_blog(只适配了移动端)](https://www.zygg.cc)
 >
 ## 总结
 >
