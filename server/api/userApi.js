@@ -3,34 +3,11 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 var $sql = require('../sqlMap');
-// var getName = require('../../src/js/getLoginName');
-var login_name = 'zygg';
-console.log('get' + login_name);
 
-function handleError(err) {
-    if (err) {
-        // 如果是连接断开，自动重新连接
-        if (err.code === 'PROTOCOL_CONNECTION_LOST') {
-            connect();
-        } else {
-            console.error(err.stack || err);
-        }
-    }
-}
+//使用连接池链接数据库
 
-// 连接数据库
-function connect() {
-    conn = mysql.createConnection(models.mysql);
-    conn.connect(handleError);
-    conn.on('error', handleError);
-}
+var pool = mysql.createPool(models.mysql);
 
-connect();
-
-// 连接数据库
-// var conn = mysql.createConnection(models.mysql);
-
-// conn.connect();
 var jsonWrite = function(res, ret) {
     if (typeof ret === 'undefined') {
         res.json({
@@ -42,138 +19,254 @@ var jsonWrite = function(res, ret) {
     }
 };
 
+//Vue_blog接口
+
 // 增加用户接口
-router.post('/addUser', (req, res) => {
+router.use('/addUser', (req, res) => {
     var sql = $sql.user.add;
     var params = req.body;
     console.log(params);
-    conn.query(sql, [params.username, params.pwd], function(err, result) {
-        if (err) {
-            console.log(err);
-        }
-        if (result) {
-            jsonWrite(res, result);
+    pool.query(sql, [params.username, params.pwd], function(error, results, fields) {
+        if (error) throw error;
+        if (results) {
+            console.log(results)
+            jsonWrite(res, results);
         }
     })
 });
-//查库操作(监测用户信息)
-router.post('/searchUser', (req, res) => {
+//查库操作(检测用户信息)
+router.use('/searchUser', (req, res) => {
     var sql = $sql.user.check;
     var params = req.body;
     console.log(params);
-    conn.query(sql, [params.username, params.pwd], function(err, result) {
-        if (err) {
-            console.log(err);
-        }
-        if (result) {
-            console.log(result)
-            jsonWrite(res, result);
+    pool.query(sql, [params.username, params.pwd], function(error, results, fields) {
+        if (error) throw error;
+        if (results) {
+            console.log(results)
+            jsonWrite(res, results);
         }
     })
 });
 //留言API,新建留言
-router.post('/writtenInfo', (req, res) => {
+router.use('/writtenInfo', (req, res) => {
     var sql = $sql.message.written;
     var params = req.body;
     console.log(params);
-    conn.query(sql, [params.message_list, params.author, params.date], function(err, result) {
-        if (err) {
-            console.log(err);
-        }
-        if (result) {
-            console.log(result)
-            jsonWrite(res, result);
+    pool.query(sql, [params.message_list, params.author, params.date], function(error, results, fields) {
+        if (error) throw error
+        if (results) {
+            console.log(results)
+            jsonWrite(res, results);
         }
     })
 });
 //留言API，获取留言列表
-router.post('/messageList', (req, res) => {
+router.use('/messageList', (req, res) => {
     var sql = $sql.message.search;
     var params = req.body;
     console.log(params);
-    conn.query(sql, [params.message_list], function(err, result) {
-        if (err) {
-            console.log(err);
-        }
-        if (result) {
-            console.log(result)
-            jsonWrite(res, result);
+    pool.query(sql, [params.message_list], function(error, results, fields) {
+        if (error) throw error;
+        if (results) {
+            console.log(results)
+            jsonWrite(res, results);
         }
     })
 });
 //发表动态API,发表动态
-router.post('/writtenDiary', (req, res) => {
+router.use('/writtenDiary', (req, res) => {
     var sql = $sql.diary.written;
     var params = req.body;
     console.log(params);
-    conn.query(sql, [params.diary_list, params.author, params.date], function(err, result) {
-        if (err) {
-            console.log(err);
-        }
-        if (result) {
-            console.log(result)
-            jsonWrite(res, result);
+    pool.query(sql, [params.diary_list, params.author, params.date], function(error, results, fields) {
+        if (error) throw error;
+        if (results) {
+            console.log(results)
+            jsonWrite(res, results);
         }
     })
 });
 //动态API，获取全部动态列表
-router.post('/alldiaryList', (req, res) => {
+router.use('/alldiaryList', (req, res) => {
     var sql = $sql.diary.search_all;
     var params = req.body;
     console.log(params);
-    conn.query(sql, [params.diary_list], function(err, result) {
-        if (err) {
-            console.log(err);
-        }
-        if (result) {
-            console.log(result)
-            jsonWrite(res, result);
+    pool.query(sql, [params.diary_list], function(error, results, fields) {
+        if (error) throw error;
+        if (results) {
+            console.log(results)
+            jsonWrite(res, results);
         }
     })
 });
 //动态API，获取个人动态列表
-router.post('/mydiaryList', (req, res) => {
+router.use('/mydiaryList', (req, res) => {
     var sql = $sql.diary.search_myself;
     var params = req.body;
     console.log(params);
-    conn.query(sql, [params.diary_list], function(err, result) {
-        if (err) {
-            console.log(err);
-        }
-        if (result) {
-            console.log(result)
-            jsonWrite(res, result);
+    pool.query(sql, [params.diary_list], function(error, results, fields) {
+        if (error) throw error;
+        if (results) {
+            console.log(results)
+            jsonWrite(res, results);
         }
     })
 });
 //评论API
-router.post('/commentOn', (req, res) => {
+router.use('/commentOn', (req, res) => {
     var sql = $sql.comment.written;
     var params = req.body;
     console.log(params);
-    conn.query(sql, [params.userid, params.msg_id, params.comment_message, params.create_time], function(err, result) {
-        if (err) {
-            console.log(err);
-        }
-        if (result) {
-            console.log(result)
-            jsonWrite(res, result);
+    pool.query(sql, [params.userid, params.msg_id, params.comment_message, params.create_time], function(error, results, fields) {
+        if (error) throw error;
+        if (results) {
+            console.log(results)
+            jsonWrite(res, results);
         }
     })
 });
 //获取评论API
-router.post('/commentGet', (req, res) => {
+router.use('/commentGet', (req, res) => {
     var sql = $sql.comment.search;
     var params = req.body;
     console.log(params);
-    conn.query(sql, [params.msg_id], function(err, result) {
-        if (err) {
-            console.log(err);
-        }
-        if (result) {
-            console.log(result)
-            jsonWrite(res, result);
+    pool.query(sql, [params.msg_id], function(error, results, fields) {
+        if (error) throw error;
+        if (results) {
+            console.log(results)
+            jsonWrite(res, results);
         }
     })
+});
+
+//微信小程序接口
+
+// 增加用户接口
+router.use('/addUserwx', (req, res) => {
+    var sql = $sql.wx_user.add;
+    var params = req.body;
+    console.log(params);
+    pool.query(sql, [params.username, params.pwd], function(error, results, fields) {
+        if (error) throw error;
+        if (results) {
+            console.log(results)
+            jsonWrite(res, results);
+        }
+    })
+});
+//查库操作(检测用户信息)
+router.use('/searchUserwx', (req, res) => {
+    var sql = $sql.wx_user.check;
+    var params = req.body;
+    console.log(params);
+    pool.query(sql, [params.username, params.pwd], function(error, results, fields) {
+        if (error) throw error;
+        if (results) {
+            console.log(results)
+            jsonWrite(res, results);
+        }
+    })
+});
+//留言API,新建留言
+router.use('/writtenInfowx', (req, res) => {
+    var sql = $sql.wx_message.written;
+    var params = req.body;
+    console.log(params);
+    pool.query(sql, [params.message_list, params.author, params.date], function(error, results, fields) {
+        if (error) throw error;
+        if (results) {
+            console.log(results)
+            jsonWrite(res, results);
+        }
+    })
+});
+//留言API，获取留言列表
+router.use('/messageListwx', (req, res) => {
+    var sql = $sql.wx_message.search;
+    var params = req.body;
+    console.log(params);
+    pool.query(sql, [params.message_list], function(error, results, fields) {
+        if (error) throw error;
+        if (results) {
+            console.log(results)
+            jsonWrite(res, results);
+        }
+    })
+});
+//发表动态API,发表动态
+router.use('/writtenDiarywx', (req, res) => {
+    var sql = $sql.wx_diary.written;
+    var params = req.body;
+    console.log(params);
+    pool.query(sql, [params.diary_list, params.author, params.date], function(error, results, fields) {
+        if (error) throw error;
+        if (results) {
+            console.log(results)
+            jsonWrite(res, results);
+        }
+    })
+});
+//动态API，获取全部动态列表
+router.use('/alldiaryListwx', (req, res) => {
+    var sql = $sql.wx_diary.search_all;
+    var params = req.body;
+    console.log(params);
+    pool.query(sql, [params.diary_list], function(error, results, fields) {
+        if (error) throw error;
+        if (results) {
+            console.log(results)
+            jsonWrite(res, results);
+        }
+    })
+});
+//动态API，获取个人动态列表
+router.use('/mydiaryListwx', (req, res) => {
+    var sql = $sql.wx_diary.search_myself;
+    var params = req.body;
+    console.log(params);
+    pool.query(sql, [params.diary_list], function(error, results, fields) {
+        if (error) throw error;
+        if (results) {
+            console.log(results)
+            jsonWrite(res, results);
+        }
+    })
+});
+//评论API
+router.use('/commentOnwx', (req, res) => {
+    var sql = $sql.wx_comment.written;
+    var params = req.body;
+    console.log(params);
+    pool.query(sql, [params.userid, params.msg_id, params.comment_message, params.create_time], function(error, results, fields) {
+        if (error) throw error;
+        if (results) {
+            console.log(results)
+            jsonWrite(res, results);
+        }
+    })
+});
+//获取评论API
+router.use('/commentGetwx', (req, res) => {
+    var sql = $sql.wx_comment.search;
+    var params = req.body;
+    console.log(params);
+    pool.query(sql, [params.msg_id], function(error, results, fields) {
+        if (error) throw error;
+        if (results) {
+            console.log(results)
+            jsonWrite(res, results);
+        }
+    })
+});
+//测试Api
+router.use('/test', function(req, res, next) {
+    var _callback = req.query.callback;
+    var _data = { email: 'zygg@zygg.cc', name: 'zygg' };
+    if (_callback) {
+        res.type('text/javascript');
+        res.send(_callback + '(' + JSON.stringify(_data) + ')');
+    } else {
+        res.json(_data);
+    }
 });
 module.exports = router;
