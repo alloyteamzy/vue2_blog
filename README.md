@@ -69,7 +69,7 @@ npm run build
 >
 [Vue_blog(只适配了移动端)](https://www.zygg.cc)
 >
-<img src="http://www.alloyteam.cn.img.800cdn.com/img_cdn/vue_blog.gif" width="375" height="665" alt="项目预览"/>
+<img src="http://www.alloyteam.cn.img.800cdn.com/img_cdn/vue_blog.gif" width="370" height="660" alt="项目预览"/>
 >
 ## 总结
 >
