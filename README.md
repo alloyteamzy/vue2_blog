@@ -24,10 +24,10 @@ Continue to see vue has been more than two months, and in March the use of vue2.
 # install dependencies
 npm install
 
-# serve with hot reload at localhost:8080 (本地启动)
+# serve with hot reload at localhost:8080 (Local start)
 npm run dev
 
-# build for production with minification （生成静态文件，用于打包上传服务器）
+# build for production with minification （Generates a static file for packaging the upload server）
 npm run build
 ```
 ## The main function of the realization
