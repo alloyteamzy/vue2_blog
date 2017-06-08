@@ -1,3 +1,78 @@
+## Why Learn and Use Vue
+>
+>1.Development trend
+>
+>
+Recently the past few years of the front circle, because the stage is generally brilliant, from MVC to MVVM, you just sing me play. Backbone, AngularJS has become yesterday's yellow, reactjs flourishing, while another more lightweight vue development momentum more fierce, known both the advantages of angularjs and reactjs both.
+>
+>
+>2.What can Vue do
+>
+>
+Mobile Internet demand has been much higher than the pc-side, especially the hybrid H5 applications, but the performance problem has been pain points. If you use SPA (which is commonly known as Single Page Web Application), SPA restricts all activities to a Web page and loads the corresponding HTML, JavaScript, and CSS only when the Web page is initialized. Once the page is loaded, the SPA will not reload or jump the page for the user's operation. No page switch, there is no white screen block, you can greatly improve the performance of H5, close to the original smooth experience.
+>
+>
+Continue to see vue has been more than two months, and in March the use of vue2.0 developed a simple blog, in the use of vue human advantages at the same time, also encountered a lot of pit, a lot of problems, I share the experience Problems and solutions
+
+
+## Vue2_blog
+>
+> vue2,vuex,vue-cli,axios,webpack,express,mysql 
+## Build Setup
+
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080 (本地启动)
+npm run dev
+
+# build for production with minification （生成静态文件，用于打包上传服务器）
+npm run build
+```
+## The main function of the realization
+>
+1.User login
+>
+2.User registration
+>
+3.User published text
+>
+4.User comments text
+>
+5.User leave word
+
+## Construct
+>
+>Use vue-cli to build the initialization project, very convenient, used to generate the project template.
+
+## vuex 
+>
+>Vue is used as a communication between components, of course, if the page is simple enough, you can also use other methods to communicate (value), but also the use of other methods to communicate, Such as props and so on.
+## axios
+>
+>To tell the truth, the project began to use vue-resource, behind the unified use axios (Vue author recommended), both for the client and server communications, that is, as ajax request.
+
+## webpack
+>
+>Webpack is a module loader and packaging tool, it can put a variety of resources, such as JS (including JSX), coffee, style (including less / sass), pictures, etc. as a module to use and deal with. For example, we vue component development, will use ". Vue" file, this file will not be resolved by the browser, so the need to use webpack to "format" them, so that they can be translated into a browser file format. Also, there, with webpack, you can be happy to use es6 syntax it!
+
+## express & mysql
+>
+>The so-called "system", how can only a simple static page? Here is the express (express is based on the Node.js platform development framework) and mysql to prepare the data storage of the back-end api, for the user information stored in the database and read.
+## pm2
+>
+>Pm2 is a process manager with a load balancing function for the Node application and ensures that the process is always alive and 0 seconds of overloading. In fact, its main role is nodejs cluster. According to my understanding, popular will, its role is that the local development environment, you have to open node services, to achieve certain functions (such as listening to a port), will be in the console implementation of "node app.js" (such as This file is called app!), The corresponding node service will be opened, but as long as you close the console window, he did not correspond to the service process, and every time the service had to "console -> node app. Js ". In the production environment, it is very troublesome, it will use the pm2, only need to implement a "pm2 start app.js". Ok, once and for all, the console window with you how to open and close, the corresponding service process is always running in the back.
+>
+## Project preview
+>
+[Vue_blog(Only fit the mobile side)](https://www.zygg.cc)
+>
+>
+## To sum up
+>
+>Just when the development of vue, encountered a lot of problems, but also made a lot of mistakes, but now, their own harvest quite many. Own vue blog (message board) has been developed to complete. I want to say is that the sparrow is small, fully equipped, although only a small application, but it covers a lot of knowledge points, including front-end, back-end, database and other sites must be some of the elements, for me, Learning great meaning, willing to encourage each other!
+
 ## 为什么学习并使用Vue
 >
 >1.发展趋势
@@ -63,7 +138,7 @@ npm run build
 >所谓一个"系统"，怎么只能是简单的静态页面？在这里用了express（express 是一个基于 Node.js 平台的开发框架）和mysql来进行编写数据存储的后端api，用于用户信息在数据库里存储和读取。
 ## pm2
 >
->pm2 是一个带有负载均衡功能的Node应用的进程管理器,并保证进程永远都活着，0秒的重载。按照我的理解，通俗的将，它的作用就是，本地开发环境，你要开启node服务，实现某些功能(比如监听某个端口)，就会在控制台执行"node app.js"(比如这个文件叫app吧！)，对应的node服务就会开启了，但是你只要一关闭这个控制台窗口，他就没有对应的服务进程了，每次起服务都得"控制台 -> node app.js"。在生产环境来说，很麻烦，这会就用到了pm2，只需要执行一次"pm2 start app.js"。ok，一劳永逸，控制台窗口随你怎么自由开启关闭，对应的服务进程永远在后面运行着。
+>pm2 是一个带有负载均衡功能的Node应用的进程管理器,并保证进程永远都活着，0秒的重载。其实它主要作用就是 nodejs 集群。按照我的理解，通俗的将，它的作用就是，本地开发环境，你要开启node服务，实现某些功能(比如监听某个端口)，就会在控制台执行"node app.js"(比如这个文件叫app吧！)，对应的node服务就会开启了，但是你只要一关闭这个控制台窗口，他就没有对应的服务进程了，每次起服务都得"控制台 -> node app.js"。在生产环境来说，很麻烦，这会就用到了pm2，只需要执行一次"pm2 start app.js"。ok，一劳永逸，控制台窗口随你怎么自由开启关闭，对应的服务进程永远在后面运行着。
 >
 ## 项目预览
 >
