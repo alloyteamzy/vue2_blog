@@ -30,6 +30,7 @@ npm run dev
 # build for production with minification （Generates a static file for packaging the upload server）
 npm run build
 ```
+:clap::clap::clap::clap::clap:Look here: if it is just a beginner's small partner, do not know how to project clone to the local, how to run locally, here wrote a detailed documentation, and I hope to help you  [Documentation](https://github.com/alloyteamzy/vue2_blog/blob/master/instruction.md):clap::clap::clap::clap::clap:
 ## The main function of the realization
 >
 1.User login
