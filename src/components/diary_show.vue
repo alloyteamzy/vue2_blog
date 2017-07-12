@@ -1,60 +1,60 @@
 <template>
-	<div class='main'>
-		<commonhead></commonhead>
-		<div class='message_title'>
-			<span>動態列表：</span>
-			<select name="myselect" id="myselect" @change='choose'>
+  <div class='main'>
+        <commonhead></commonhead>
+        <div class='message_title'>
+            <span>動態列表：</span>
+            <select name="myselect" id="myselect" @change='choose'>
 				<option value="my">個人動態</option>
 				<option selected='' value="all">全部動態</option>
 			</select>
-		</div>
-		<ul class='bg_brown'>
-			<li v-for="(item, index) in items" v-if="index < page_num">
-			   <div class='user_info_show'>
-				    <div class='user_pic fl'>
-				       <img src='../assets/img/user.jpg' class='w100'>
-			        </div>
-					<div class='fl'>
-						<span class='message_author'>{{ item.author }}</span></br>
-			            <span class='message_date'>{{ item.date}}  發表動態</span>
-					</div>
-					<div class='clear'></div>
-			   </div>
-               <span class='message_info'>{{ item.diary_list }} </span>
-			   <div :class="[text_right,icon_hide]">
-				   <div class='message_icon' @click='reward(index)'><img src='../assets/img/message_icon.png' class='w100'></div>
-			   </div>
-			   <div :class='[reward_area,reward_hide]'>
-			   <form action="">
-				    <input type="hidden" name="msgId" :value="item.msg_id" class='msg_id'>
-					<textarea type='text' class='reward_input' placeholder="在這裏評論"></textarea>
-					<p class='two_btn'><span class='comment_btn' @click='comment(index)'>評論</span><span class='cancel_btn ml2' @click='cancel(index)'>取消</span></p>
-					</div>
-               </form>
-			   <ul class='reward_list'></ul>
-             </li>
-		</ul>
-		<div :class="[classbg, classFade]" ref='bg'>
-				<div class="modal" id="myModal" tabindex="2" role="dialog" aria-labelledby="myModalLabel">
-					<div class="modal-dialog">
-						<div class="modal-content fadeIn">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" @click='closemodel'>
+        </div>
+        <ul class='bg_brown'>
+            <li v-for="(item, index) in items" v-if="index < page_num">
+                <div class='user_info_show'>
+                    <div class='user_pic fl'>
+                        <img src='../assets/img/user.jpg' class='w100'>
+                    </div>
+                    <div class='fl'>
+                        <span class='message_author'>{{ item.author }}</span></br>
+                        <span class='message_date'>{{ item.date}}  發表動態</span>
+                    </div>
+                    <div class='clear'></div>
+                </div>
+                <span class='message_info'>{{ item.diary_list }} </span>
+                <div :class="[text_right,icon_hide]">
+                    <div class='message_icon' @click='reward(index)'><img src='../assets/img/message_icon.png' class='w100'></div>
+                </div>
+                <div :class='[reward_area,reward_hide]'>
+                    <form action="">
+                        <input type="hidden" name="msgId" :value="item.msg_id" class='msg_id'>
+                        <textarea type='text' class='reward_input' placeholder="在這裏評論"></textarea>
+                        <p class='two_btn'><span class='comment_btn' @click='comment(index)'>評論</span><span class='cancel_btn ml2' @click='cancel(index)'>取消</span></p>
+                    </form>
+                </div>
+                <ul class='reward_list'></ul>
+            </li>
+        </ul>
+        <div :class="[classbg, classFade]" ref='bg'>
+            <div class="modal" id="myModal" tabindex="2" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog">
+                    <div class="modal-content fadeIn">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" @click='closemodel'>
 					&times;
 				</button>
-								<h4 class="modal-title" id="myModalLabel">
-                                                            提示
-                    </h4>
-							</div>
-							<div class="modal-body">
-								{{errinfo}}
-							</div>
-						</div>
-					</div>
-				</div>
-		</div>
-		<div :class='[loading_pic,hidden]'><img src='../assets/img/loading.gif' class='w100'></div>
-	</div>
+                            <h4 class="modal-title" id="myModalLabel">
+                                提示
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            {{errinfo}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div :class='[loading_pic,hidden]'><img src='../assets/img/loading.gif' class='w100'></div>
+    </div>
 </template>
 
 <script>
