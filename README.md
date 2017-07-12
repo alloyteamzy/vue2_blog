@@ -105,6 +105,8 @@ npm run dev
 # build for production with minification （生成静态文件，用于打包上传服务器）
 npm run build
 ```
+:clap::clap::clap::clap::clap:看这里：如果是刚入门的小伙伴，不知道把项目clone到本地后怎么在本地跑起来，这里写了个详细的说明文档，希望能帮助到你们  [说明文档](https://github.com/alloyteamzy/vue2_blog/blob/master/instruction.md):clap::clap::clap::clap::clap:
+
 ## 主要实现的功能
 >
 1.用户登录
