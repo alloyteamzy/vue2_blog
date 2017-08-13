@@ -25,7 +25,7 @@
 
 *  漂亮又文艺的主页就出来了。
 
-![mahua](http://www.alloyteam.cn.img.800cdn.com/img_cdn/6.jpg)
+![mahua](http://www.alloyteam.cn.img.800cdn.com/img_cdn/index.jpg)
 
 *  但是，发现功能是有问题的，点击按钮会报错。是因为我们没有起对应的服务。
 
