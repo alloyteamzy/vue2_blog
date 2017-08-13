@@ -1,6 +1,6 @@
 .register {
     z-index: 2;
-    background-image: url('../img/register_bg.png');
+    background-image: url('http://www.alloyteam.cn.img.800cdn.com/static/img/register_bg.1462184.png');
     background-size: 100% 100%;
     height: 100%;
 }
@@ -18,7 +18,7 @@
 .input_area {
     width: 80%;
     position: absolute;
-    top: 15%;
+    top: 8%;
     background-image: url('../img/form_bg.png');
     background-size: 100% 100%;
     padding: 1rem 0 2rem;

@@ -8,6 +8,10 @@
     font-family: cursive;
 }
 
+.pic_full {
+    width: 100%;
+}
+
 .about .pb1 {
     padding-bottom: 1rem;
 }

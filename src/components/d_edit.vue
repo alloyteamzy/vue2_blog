@@ -59,11 +59,16 @@
 			   var currentdate = gettime.gettimer();
 			   var self = this;
 				if(message_info != '' && this.author != ''){
-					axios.post('api/user/writtenDiary', {
-					diary_list: message_info,
-					author:author_info,
-					date:currentdate
-				}).then(function(response){
+				axios({
+					method: 'post',
+					url: 'api/user/writtenDiary',
+					data: {
+						diary_list: message_info,
+						author:author_info,
+						date:currentdate
+					},
+					timeout: 3000
+                }).then(function(response){
 					// console.log(response);
 					if(response.status == '200'){
 						self.classFade = '';
@@ -73,7 +78,11 @@
 						self.classFade = '';
 				        self.errinfo = '發表失敗，未知的錯誤！';
 					}
-				});
+				}).catch(function(error) {
+                        console.log(error);
+                        self.classFade = '';
+                        self.errinfo = '服務器繁忙，請刷新頁面或者稍後重試!(Error code: 504)'
+                    });
 			}
 			else if(this.author == ''){
                  this.classFade = '';

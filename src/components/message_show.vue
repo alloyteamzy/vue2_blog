@@ -20,6 +20,7 @@
 			   <p class='text-right floor'>{{index+1}}#</p>
              </li>
 		</ul>
+		<div :class='[up_pic,up_isShow]' @click='goTop'><img src='../assets/img/up.png' class='w100'></div>
 		<div :class="[classbg, classFade]" ref='bg'>
 				<div class="modal" id="myModal" tabindex="2" role="dialog" aria-labelledby="myModalLabel">
 					<div class="modal-dialog">
@@ -61,7 +62,9 @@
 			  classFade:'hide',
 			  errinfo:'',
 			  loading_pic:'loading_pic',
-			  hidden:'hide'
+			  hidden:'hide',
+			  up_pic:'up_pic',
+			  up_isShow:'hidden'
 		  }
 		},
 		components: {
@@ -77,6 +80,12 @@
 	           var scrollTopjs = document.documentElement.scrollTop || window.pageYOfset ||document.body.scrollTop;
     	       var scrollHeightjs = document.body.scrollHeight;
     	       var windowHeightjs = document.documentElement.clientHeight;
+			   if(scrollTopjs > 800){
+                    self.up_isShow = '';
+			   }
+			   else{
+				    self.up_isShow = 'hidden';
+			   }
     	       if (scrollTopjs + windowHeightjs == scrollHeightjs) {　　
     	        //  console.log('js到底了！');
 				 if(self.page_num < self.list_total){
@@ -99,11 +108,16 @@
 				 this.errinfo = '未登錄，請登錄！';
 				}
                else{
-				   axios.post('api/user/messageList', {
-					message_list: message_info,
-					author:author_info,
-					date:currentdate
-				}).then(function(response){
+				axios({
+						method: 'get',
+						url: 'api/user/messageList',
+						data: {
+							message_list: message_info,
+							author:author_info,
+							date:currentdate
+						},
+						timeout: 3000
+                    }).then(function(response){
 					self.items = response.data;
 					self.list_total = response.data.length;
 				    if(self.list_total >= 8){
@@ -113,13 +127,20 @@
 				        self.page_num = self.list_total;
 			        }
 					// console.log(response.data);
-				})
+				}).catch(function(error) {
+                        console.log(error);
+                        self.classFade = '';
+                        self.errinfo = '服務器繁忙，請刷新頁面或者稍後重試!(Error code: 504)'
+                    });
 			}
 	   },
 	   methods:{
 		   	closemodel: function() {
              this.classFade = 'hide';
-           }
+           },
+		    goTop:function(){
+             $('html,body').animate({scrollTop:'0px'},200);
+		   }
 	   }
 	}
 </script>

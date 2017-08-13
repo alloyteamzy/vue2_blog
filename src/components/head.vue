@@ -1,6 +1,6 @@
 <template>
     <div class='pr'>
-		<div class='logo'><img src='../assets/img/logo2017.svg' class='pic-full'></div>
+		<!-- <div class='logo'><img src='../assets/img/logo2017.svg' class='pic-full'></div> -->
 		<div class='info_area'>
 		 <router-link to="/login"><div class='user_img'><img src='../assets/img/user.jpg' class='pic-full'></div></router-link>
 		 <div class='log_out' @click='logout'><img src='../assets/img/log_out.png' class='pic-full'></div>

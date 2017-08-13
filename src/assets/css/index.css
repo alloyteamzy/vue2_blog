@@ -1,3 +1,17 @@
+.index {
+    background-image: url('http://www.alloyteam.cn.img.800cdn.com/static/img/index_bg.a079a72.jpg');
+    background-size: 100% 100%;
+    height: 100%;
+}
+
+.index .bgShow {
+    height: 100%;
+    position: relative;
+    background-color: currentColor;
+    opacity: 0.4;
+    z-index: 1
+}
+
 .index #rainarea {
     display: none;
 }
@@ -12,7 +26,7 @@
     position: fixed;
     top: 2.5rem;
     left: 1.5rem;
-    z-index: 1;
+    z-index: 2;
 }
 
 .index .logo_inline svg {
@@ -33,6 +47,7 @@
     text-align: center;
     font-size: 1rem;
     color: mediumpurple;
+    z-index: 3;
 }
 
 .index .footer {

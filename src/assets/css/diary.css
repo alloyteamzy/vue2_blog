@@ -1,17 +1,18 @@
 .diary {
-    background-image: url('../img/diary_bg.jpg');
+    /* background-image: url('http://www.alloyteam.cn.img.800cdn.com/static/img/diary_bg.fc21892.jpg'); */
     background-size: 100% 100%;
     height: 100%;
+    background-color: #8B4513;
 }
 
 .content {
-    background-image: url('../img/article_bg.jpg');
+    /* background-image: url('http://www.alloyteam.cn.img.800cdn.com/static/img/article_bg.0670e9c.jpg'); */
     background-size: 100% 100%;
     width: 85%;
     margin: 0 auto;
     height: 81%;
     margin-top: -3rem;
-    box-shadow: 0.3rem 0.3rem 1.2rem #000
+    /* box-shadow: 0.3rem 0.3rem 1.2rem #000 */
 }
 
 .quote {
@@ -47,12 +48,12 @@
     width: 4rem;
     height: 4rem;
     border-radius: 50%;
-    text-align: center;
+    /* text-align: center;
     color: #fff;
-    border: 10px solid #fff;
+    border: 0.2rem solid #fff;
     cursor: pointer;
     box-shadow: 0.3rem 0.3rem 1.2rem #000;
     transform: scale(.8);
     background: center center no-repeat transparent;
-    background-image: url('../img/edit.png'), linear-gradient(to bottom, #8B4513, #7a3c11);
+    background-image: url('../img/edit.png'), linear-gradient(to bottom, #8B4513, #7a3c11); */
 }

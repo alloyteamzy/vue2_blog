@@ -1,5 +1,6 @@
 ﻿<template>
 	<div class='register'>
+            <commonfoot></commonfoot>
 			<div class='form_area w80 pr'>
 				<!--<img src='../assets/img/form_bg.png' class='w100'>-->
 				<div class='input_area'>
@@ -39,12 +40,13 @@
 							</div>
 						</div>
 					</div>
-        <h2 class='author'>Created by AlloyTeamZy</h2>
-        <h2 class='myurl'>www.zygg.cc</h2>
+        <!--<h2 class='author'>Created by AlloyTeamZy</h2>
+        <h2 class='myurl'>www.zygg.cc</h2>-->
 		</div>
 </template>
 <script type="text/javascript">
   import {setCookie} from '../js/setcookie.js'
+  import commonfoot from './common_foot.vue'
   import axios from 'axios'
   import '../js/init.js'
    export default {
@@ -58,6 +60,9 @@
                classFade:''
            }
        },
+       	components: {
+        commonfoot: commonfoot
+      },
        created () {
       	setCookie.getInfo(this.userName,this.pwd);
         this.classFade = 'hide';
@@ -69,16 +74,21 @@
                var repwd = this.repwd;
                var self = this;
                if (name == '' || pwd == '' || repwd == '') {
-                   this.errinfo = '填写信息不完整';
+                   this.errinfo = '填寫信息不完整';
                    this.classFade = ''
                } else if (pwd != repwd) {
-                   this.errinfo = '二次密码不一致';
+                   this.errinfo = '二次密碼不壹致';
                    this.classFade = ''
-               } else {
-                   axios.post('api/user/searchUser', {
-                       username: name,
-                       pwd: pwd
-                   }).then(function(response){
+               } else {                   
+                   	axios({
+						method: 'get',
+						url: 'api/user/searchUser',
+						data: {
+                            username: name,
+                            pwd: pwd
+						},
+						timeout: 3000
+                    }).then(function(response){
                        var i;
                        var flag = "noExist";
                        for (i in response.data) {
@@ -87,26 +97,39 @@
                            }
                        }
                        if (flag == 'Exist') {
-                           self.errinfo = '用户名已被注册';
+                           self.errinfo = '用戶名已被註冊';
                            self.classFade = ''
                        } else if (flag == 'noExist') {
-                           axios.post('api/user/addUser', {
-                               username: name,
-                               pwd: pwd
-                           }).then(function(response){
+                        axios({
+                                method: 'post',
+                                url: 'api/user/addUser',
+                                data: {
+                                    username: name,
+                                    pwd: pwd
+                                },
+                                timeout: 3000
+                              }).then(function(response){
                                if (response.status == 200) {
-                                   self.errinfo = '注册成功，欢迎你，'+ name;
+                                   self.errinfo = '註冊成功，歡迎妳，'+ name;
                                    self.classFade = ''
                                 //    setCookie.getInfo(this.userName,this.pwd);
                                 //    setCookie.userLogin();
                                    setTimeout("window.location.href = './#/login'",2000)
                                } else {
-                                   self.errinfo = '注册失败，未知的错误';
+                                   self.errinfo = '註冊失敗，未知的錯誤';
                                    self.classFade = ''
                                }
-                           })
+                           }).catch(function(error) {
+                                    console.log(error);
+                                    self.classFade = '';
+                                    self.errinfo = '服務器繁忙，請刷新頁面或者稍後重試!(Error code: 504)'
+                           });
                        }
-                   })
+                   }).catch(function(error) {
+                        console.log(error);
+                        self.classFade = '';
+                        self.errinfo = '服務器繁忙，請刷新頁面或者稍後重試!(Error code: 504)'
+                    });
                }
            },
            closemodel: function() {
