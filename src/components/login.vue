@@ -1,43 +1,45 @@
 <template>
 <div class='mylogin h100'>
-    <div class="login h100">
-        <form>
-          <div class="form-area">
-            <div class='login-icon'><img src='../assets/img/user.png' class='pic-full'></div>
-            <input type="text" placeholder="Username" required="required" ref='user' name="username" v-model="userName" :value='user_name'><br>
-            <div class='login-icon'><img src='../assets/img/pwd.png' class='pic-full'></div>
-            <input type="password" placeholder="Password"  required="required" ref='pwd' name="pwd" v-model="pwd"><br>
-            <div class='two-btns'>
-              <router-link to="/register"><input type="button" value="Register" class='fl'></router-link>
-              <input type="button" @click="checkUser" value="Login" class='fr'>
-              <div class='clear'></div>
-            </div>
-        </form>
-    </div>
-    <input class='check_btn' type="hidden" id="chkRememberPass" name="chkRememberPass" checked="">
-    <div class='footer'>
-       <router-link to="/about"><span>關於我</span></router-link>|<span><router-link to="/diary/d_edit">發表動態</router-link></span>|<span><router-link to="/message_board/m_edit">給我留言🍀</router-link></span>
-    </div>
-    <div :class="[classbg, classFade]" ref='bg'>
-	   <div class="modal" id="myModal" tabindex="2" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog">
-            <div class="modal-content fadeIn">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" @click='closemodel'>
+			<div class="login h100">
+				<form>
+					<div class="form-area">
+						<div class='login-icon'><img src='../assets/img/user.png' class='pic-full'></div>
+						<input type="text" placeholder="Username" required="required" ref='user' name="username" v-model="userName"><br>
+						<div class='login-icon'><img src='../assets/img/pwd.png' class='pic-full'></div>
+						<input type="password" placeholder="Password" required="required" ref='pwd' name="pwd" v-model="pwd"><br>
+						<div class='two-btns'>
+							<router-link to="/register"><input type="button" value="Register" class='fl'></router-link>
+							<input type="button" @click="checkUser" value="Login" class='fr'>
+							<div class='clear'></div>
+						</div>
+					</div>
+				</form>
+				<input class='check_btn' type="hidden" id="chkRememberPass" name="chkRememberPass" checked="">
+				<div class='footer'>
+					<router-link to="/about"><span>關於我</span></router-link>|<span><router-link to="/diary/d_edit">發表動態</router-link></span>|<span><router-link to="/message_board/m_edit">給我留言🍀</router-link></span>
+				</div>
+				<div :class="[classbg, classFade]" ref='bg'>
+					<div class="modal" id="myModal" tabindex="2" role="dialog" aria-labelledby="myModalLabel">
+						<div class="modal-dialog">
+							<div class="modal-content fadeIn">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" @click='closemodel'>
 					&times;
 				</button>
-                    <h4 class="modal-title" id="myModalLabel">
+									<h4 class="modal-title" id="myModalLabel">
                                                             提示
                     </h4>
-                </div>
-                <div class="modal-body">
-                   <span>{{notice_info}}</span>
-                   <span :class='[info_hide, pl2]'><router-link to="/diary/d_edit"><span>發表動態</span></router-link><span :class='direct'>|</span><span><router-link to="/message_board/m_edit">給我留言🍀</router-link></span></span>
-                </div>
-            </div>
-        </div>
-       </div>
-</div>
+								</div>
+								<div class="modal-body">
+									<span>{{notice_info}}</span>
+									<span :class='[info_hide, pl2]'><router-link to="/diary/d_edit"><span>發表動態</span></router-link><span :class='direct'>|</span><span><router-link to="/message_board/m_edit">給我留言🍀</router-link></span></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 </template>
 <script>
     import {mapState} from 'vuex'
