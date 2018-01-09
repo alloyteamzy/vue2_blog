@@ -29,8 +29,9 @@
 				    <input type="hidden" name="msgId" :value="item.msg_id" class='msg_id'>
 					<textarea type='text' class='reward_input' placeholder="在這裏評論"></textarea>
 					<p class='two_btn'><span class='comment_btn' @click='comment(index)'>評論</span><span class='cancel_btn ml2' @click='cancel(index)'>取消</span></p>
+			   </form>
 					</div>
-               </form>
+               
 			   <ul class='reward_list'></ul>
              </li>
 		</ul>
