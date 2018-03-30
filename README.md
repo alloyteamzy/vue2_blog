@@ -152,4 +152,5 @@ npm run build
 >
 >刚用vue开发的时候，遇到了很多问题，也犯了很多错误，不过，现在而言，自己收获蛮多。自己的vue博客（留言板）已经开发完成。我想说的是，麻雀虽小，五脏俱全，虽然只是一个小应用，但它涵盖了许多知识点，包括前端，后端，数据库等一个网站的所必须的一些组成要素，对我来说，学习意义很大，愿共勉！
 ## 随意打赏
->>>>![Image text](https://www.zygg.cc/wechat_pay.jpg)
+![Image text](https://www.zygg.cc/wechat_pay.jpg)
+<img src="https://www.zygg.cc/wechat_pay.jpg" width="25%"/>
